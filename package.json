@@ -1,0 +1,23 @@
+{
+  "name": "ztailwindCurso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss src/tailwind.css -o static/dist/tailwind.css",
+    "watch": "watch 'npm run build:css' ./layouts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.12",
+    "tailwindcss": "^2.2.19",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {
+    "postcss-cli": "^9.0.2"
+  }
+}
