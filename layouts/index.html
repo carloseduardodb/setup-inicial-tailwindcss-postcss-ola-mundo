@@ -1,13 +1,1107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../static/dist/tailwind.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page Tailwind</title>
-</head>
-<body>
-    <p class="text-red-500">Olá Mundo</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../static/dist/tailwind.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page - Finsweet</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <style>
+      .carousel-open:checked + .carousel-item {
+        position: static;
+        opacity: 100;
+      }
+
+      .carousel-item {
+        -webkit-transition: opacity 0.6s ease-out;
+        transition: opacity 0.6s ease-out;
+      }
+
+      #carousel-1:checked ~ .control-1,
+      #carousel-2:checked ~ .control-2,
+      #carousel-3:checked ~ .control-3 {
+        display: block;
+      }
+
+      .carousel-indicators {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+      }
+
+      #carousel-1:checked
+        ~ .control-1
+        ~ .carousel-indicators
+        li:nth-child(1)
+        .carousel-bullet,
+      #carousel-2:checked
+        ~ .control-2
+        ~ .carousel-indicators
+        li:nth-child(2)
+        .carousel-bullet,
+      #carousel-3:checked
+        ~ .control-3
+        ~ .carousel-indicators
+        li:nth-child(3)
+        .carousel-bullet {
+        color: #ff6433;
+        /*Set to match the Tailwind colour you want the active one to be */
+      }
+
+      /* Tab content - closed */
+      .tab-content {
+        max-height: 0;
+        -webkit-transition: max-height 0.35s;
+        -o-transition: max-height 0.35s;
+        transition: max-height 0.35s;
+      }
+      /* :checked - resize to full height */
+      .tab input:checked ~ .tab-content {
+        max-height: 100vh;
+      }
+      /* Label formatting when open */
+      .tab input:checked + label {
+        /*@apply text-xl p-5 border-l-2 border-p-orange-primary bg-gray-100 text-indigo*/
+        font-size: 1.25rem; /*.text-xl*/
+        padding: 1.25rem; /*.p-5*/
+        border-left-width: 2px; /*.border-l-2*/
+        border-color: #ff6433; /*.border-indigo*/
+        background-color: #f8fafc; /*.bg-gray-100 */
+        color: #ff6433; /*.text-indigo*/
+      }
+      /* Icon */
+      .tab label::after {
+        float: right;
+        right: 0;
+        top: 0;
+        display: block;
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.5;
+        font-size: 1.25rem;
+        text-align: center;
+        -webkit-transition: all 0.35s;
+        -o-transition: all 0.35s;
+        transition: all 0.35s;
+      }
+      /* Icon formatting - closed */
+      .tab input[type="checkbox"] + label::after {
+        content: "+";
+        font-weight: bold; /*.font-bold*/
+        border-width: 1px; /*.border*/
+        border-radius: 9999px; /*.rounded-full */
+        border-color: #b8c2cc; /*.border-grey*/
+      }
+      .tab input[type="radio"] + label::after {
+        content: "+";
+        vertical-align: middle;
+        font-weight: bold; /*.font-bold*/
+        border-width: 1px; /*.border*/
+        border-radius: 9999px; /*.rounded-full */
+        border-color: #b8c2cc; /*.border-grey*/
+      }
+      /* Icon formatting - open */
+      .tab input[type="checkbox"]:checked + label::after {
+        transform: rotate(315deg);
+        background-color: #ff6433; /*.bg-indigo*/
+        color: #f8fafc; /*.text-grey-lightest*/
+      }
+      .tab input[type="radio"]:checked + label::after {
+        content: "-";
+        transform: rotateX(180deg);
+        background-color: #ff6433; /*.bg-indigo*/
+        color: #f8fafc; /*.text-grey-lightest*/
+      }
+    </style>
+  </head>
+
+  <body class="flex justify-center">
+    <div class="max-w-5xl w-full">
+      <!--Start Navbar-->
+      <nav class="flex justify-between py-5 items-center">
+        <a href="../index.html">
+          <h2 class="text-2xl">{finsweet</h2>
+        </a>
+        <ul class="flex flex-row gap-x-10 items-center">
+          <li>
+            <a
+              class="
+                hover:text-p-orange-primary
+                transition-colors
+                delay-200
+                duration-200
+              "
+              href="#"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              class="
+                hover:text-p-orange-primary
+                transition-colors
+                delay-50
+                duration-200
+              "
+              href="#"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              class="
+                hover:text-p-orange-primary
+                transition-colors
+                delay-200
+                duration-200
+              "
+              href="#"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              class="
+                hover:text-p-orange-primary
+                transition-colors
+                delay-200
+                duration-200
+              "
+              href="#"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              class="
+                hover:text-p-orange-primary
+                transition-colors
+                delay-200
+                duration-200
+              "
+              href="#"
+              >Contact</a
+            >
+          </li>
+          <li class="flex gap-x-5 items-center">
+            <a href="#">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="20" cy="20" r="20" fill="#61C4A1" />
+                <path
+                  d="M27.76 23.9203C26.4636 22.8869 25.148 22.261 23.8675 
+                  23.2928L23.1029 23.9164C22.5435 24.3691 21.5034 26.4842 17.482 
+                  22.1728C13.4615 17.8668 15.854 17.1963 16.4143 16.7475L17.1831 
+                  16.1231C18.4568 15.089 17.9761 13.7871 17.0574 12.447L16.5031 
+                  11.6353C15.5802 10.2983 14.5753 9.4202 13.2982 10.4528L12.6081 
+                  11.0148C12.0437 11.398 10.4659 12.6437 10.0832 15.0101C9.62262 
+                  17.8496 11.0756 21.1011 14.4044 24.6688C17.7291 28.238 20.9842 
+                  30.0308 24.0677 29.9996C26.6303 29.9738 28.1779 28.6923 28.6619 
+                  28.2263L29.3545 27.6636C30.6282 26.6317 29.8368 25.5812 28.5396 
+                  24.5455L27.76 23.9203Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+            <div>
+              <p>Road Assistance</p>
+              <p>1800 265 24 52</p>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!--End Navbar-->
+
+      <!--Start Initial Section-->
+
+      <section class="flex items-center">
+        <div class="w-6/12">
+          <h1 class="text-5xl font-bold">
+            Get your vehicle service done online at one place
+          </h1>
+          <br />
+          <button
+            class="
+              bg-p-orange-primary
+              text-white
+              px-5
+              py-2
+              rounded-lg
+              hover:bg-white
+              border-2
+              hover:border-p-orange-primary hover:text-p-orange-primary
+            "
+          >
+            Button
+          </button>
+          <br />
+          <br />
+          <div class="flex">
+            <svg
+              class="text-gray-500"
+              width="31"
+              height="31"
+              viewBox="0 0 31 31"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M26.4224 4.54586C23.5009 1.62414 19.6161 0.0151367 
+                15.4844 0.0151367C11.3526 0.0151367 7.46789 1.62414 
+                4.54635 4.54586C1.62462 7.4674 0.015625 11.3522 0.015625 
+                15.4839C0.015625 19.6156 1.62462 23.5004 4.54635 26.4219C7.46789 
+                29.3436 11.3526 30.9526 15.4844 30.9526C19.6161 30.9526 23.5009 
+                29.3436 26.4224 26.4219C29.3441 23.5004 30.9531 19.6156 30.9531 
+                15.4839C30.9531 11.3522 29.3441 7.4674 26.4224 4.54586ZM15.4844 
+                28.5356C8.28778 28.5356 2.43262 22.6805 2.43262 15.4839C2.43262 
+                8.28729 8.28778 2.43213 15.4844 2.43213C22.681 2.43213 28.5361 
+                8.28729 28.5361 15.4839C28.5361 22.6805 22.681 28.5356 15.4844 
+                28.5356ZM17.8009 16.1741L22.1979 20.5486L20.4932 22.2624L16.0435 
+                17.835C15.8639 17.8778 15.677 17.9009 15.4844 17.9009C14.1496 
+                17.9009 13.0674 16.8187 13.0674 15.4839C13.0674 14.6145 13.5266 
+                13.8526 14.2155 13.4268V4.90955H15.424H16.6324V13.3566C17.3879 
+                13.7654 17.9014 14.5645 17.9014 15.4839C17.9014 15.7237 17.8659 
+                15.9552 17.8009 16.1741Z"
+                fill="#E2E6E9"
+              />
+            </svg>
+            <div class="ml-5">
+              <p class="text-gray-500 text-xs">We are open</p>
+              <p class="text-sm">Monday to Friday 9:00 AM to 10:00 AM</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-6/12">
+          <div class="my-10">
+            <img
+              src="./img/initial-page.png"
+              alt="Mecanico dando manutencao em um carro"
+              class="w-full"
+            />
+          </div>
+        </div>
+      </section>
+      <!--End Initial Section-->
+
+      <section class="flex items-center justify-between gap-x-5 my-16">
+        <div class="absolute h-4/6 w-full z-0 bg-gray-200 left-0"></div>
+        <div class="w-5/12 z-30 py-5">
+          <h2 class="text-4xl font-semibold">
+            We are taking car servicing seriously
+          </h2>
+          <br />
+          <ul class="gap-5 z-30">
+            <li class="flex items-start">
+              <img src="./img/Icon (1).svg" />
+              <div>
+                <p class="font-semibold">Convenient service</p>
+                <small
+                  >Through True Rich Attended does no end it his mother since
+                  real had half every him.</small
+                >
+              </div>
+            </li>
+            <br />
+            <li class="flex items-start gap-5">
+              <img src="./img/Icon (2).svg" />
+              <div>
+                <p>Expert mechanics</p>
+                <small>
+                  Through True Rich Attended does no end it his mother since
+                  real had half every him.
+                </small>
+              </div>
+            </li>
+            <br />
+
+            <li class="flex items-start gap-5">
+              <img src="./img/Icon (3).svg" />
+              <div>
+                <p>Transparent pricing</p>
+                <small>
+                  Through True Rich Attended does no end it his mother since
+                  real had half every him.
+                </small>
+              </div>
+            </li>
+          </ul>
+          <br />
+          <br />
+
+          <div class="flex flex-row items-center gap-x-7">
+            <a href="#">Know more about us</a>
+            <svg
+              width="53"
+              height="16"
+              viewBox="0 0 53 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M52.7071 8.70711C53.0976 8.31658 53.0976 7.68342 52.7071 7.29289L46.3431 0.928932C45.9526 0.538408 45.3195 0.538408 44.9289 0.928932C44.5384 1.31946 44.5384 1.95262 44.9289 2.34315L50.5858 8L44.9289 13.6569C44.5384 14.0474 44.5384 14.6805 44.9289 15.0711C45.3195 15.4616 45.9526 15.4616 46.3431 15.0711L52.7071 8.70711ZM0 9H52V7H0V9Z"
+                fill="#1E1B1B"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="w-7/12 ml-10 z-30">
+          <h2 class="text-3xl">
+            Get a quote for the car <br />
+            service
+          </h2>
+          <br />
+          <form action="" class="flex flex-col gap-y-3">
+            <input
+              placeholder="Enter your location"
+              class="px-8 py-4"
+              type="text"
+            />
+            <input
+              placeholder="Enter your location"
+              class="px-8 py-4"
+              type="text"
+            />
+            <input
+              placeholder="Enter your location"
+              class="px-8 py-4"
+              type="text"
+            />
+            <input
+              placeholder="Enter your location"
+              class="px-8 py-4"
+              type="text"
+            />
+            <button
+              style="width: min-content"
+              class="
+                ml-5
+                bg-p-orange-primary
+                text-white
+                rounded-lg
+                px-5
+                py-2
+                hover:bg-white
+                border-2
+                hover:border-p-orange-primary hover:text-p-orange-primary
+              "
+            >
+              Button
+            </button>
+          </form>
+        </div>
+      </section>
+      <br />
+      <br />
+      <br />
+      <br />
+      <!--- Start Section 3 -->
+      <section class="flex flex-row items-center justify-between gap-x-12">
+        <div class="w-7/12">
+          <h1 class="text-5xl font-bold">
+            We follow a clear process to help you out.
+          </h1>
+          <br />
+          <div class="flex flex-col">
+            <small>
+              Through True Rich Attended does no end it his mother since real
+              had half every him case in packages enquire
+            </small>
+            <button
+              style="width: min-content"
+              class="
+                bg-p-orange-primary
+                text-white
+                px-5
+                py-2
+                m-5
+                rounded-lg
+                hover:bg-white
+                border-2
+                hover:border-p-orange-primary hover:text-p-orange-primary
+              "
+            >
+              Button
+            </button>
+          </div>
+        </div>
+        <div class="w-4/12">
+          <div class="flex gap-2">
+            <div class="flex flex-col items-center">
+              <span
+                class="
+                  bg-purple-700
+                  shadow-lg
+                  p-2
+                  w-14
+                  text-center
+                  rounded-full
+                  text-white
+                "
+                >01</span
+              >
+              <span
+                class="
+                  border-l-2 border-p-orange-primary border-dashed
+                  mt-2
+                  h-16
+                "
+              ></span>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold">Get a Quote</h2>
+              <small>
+                Through True Rich Attended does no end it his mother since real
+                had half every.
+              </small>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="flex gap-2">
+            <div class="flex flex-col items-center">
+              <span
+                class="
+                  bg-purple-700
+                  shadow-lg
+                  p-2
+                  w-14
+                  text-center
+                  rounded-full
+                  text-white
+                "
+                >02</span
+              >
+              <span
+                class="
+                  border-l-2 border-p-orange-primary border-dashed
+                  mt-2
+                  h-16
+                "
+              ></span>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold">Book an Appointment</h2>
+              <small>
+                Through True Rich Attended does no end it his mother since real
+                had half every.
+              </small>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="flex gap-2">
+            <div class="flex flex-col items-center">
+              <span
+                class="
+                  bg-purple-700
+                  shadow-lg
+                  p-2
+                  w-14
+                  text-center
+                  rounded-full
+                  text-white
+                "
+                >03</span
+              >
+            </div>
+            <div>
+              <h2 class="text-xl font-bold">Get your Service Done</h2>
+              <small>
+                Through True Rich Attended does no end it his mother since real
+                had half every.
+              </small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--- End Section 3 -->
+
+      <!-- Section  4 -->
+      <br />
+      <br />
+      <br />
+      <section>
+        <h2 class="text-2xl font-bold text-center">
+          Our customers say the nicest things about our service
+        </h2>
+        <div
+          class="
+            carousel
+            rounded
+            relative
+            overflow-hidden
+            my-20
+            bg-gray-200
+            shadow-2xl
+          "
+        >
+          <div class="carousel-inner relative overflow-hidden w-full">
+            <!--Slide 1-->
+            <input
+              class="carousel-open"
+              type="radio"
+              id="carousel-1"
+              name="carousel"
+              aria-hidden="true"
+              hidden=""
+              checked="checked"
+            />
+            <div
+              class="
+                carousel-item
+                absolute
+                opacity-0
+                bg-center
+                flex
+                items-center
+                justify-center
+                w-full
+                h-full
+                gap-x-12
+              "
+              style="height: 500px"
+            >
+              <div
+                class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+              >
+                <div class="flex justify-center md:justify-end -mt-16">
+                  <img
+                    class="
+                      w-20
+                      h-20
+                      object-cover
+                      rounded-full
+                      border-2 border-p-orange-primary
+                    "
+                    src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                  />
+                </div>
+                <div>
+                  <h2 class="text-gray-800 text-3xl font-semibold">
+                    Design Tools
+                  </h2>
+                  <p class="mt-2 text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quae dolores deserunt ea doloremque natus error, rerum quas
+                    odio quaerat nam ex commodi hic, suscipit in a veritatis
+                    pariatur minus consequuntur!
+                  </p>
+                </div>
+                <div class="flex justify-end mt-4">
+                  <a href="#" class="text-xl font-medium text-p-orange-primary"
+                    >John Doe</a
+                  >
+                </div>
+              </div>
+              <div
+                class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+              >
+                <div class="flex justify-center md:justify-end -mt-16">
+                  <img
+                    class="
+                      w-20
+                      h-20
+                      object-cover
+                      rounded-full
+                      border-2 border-p-orange-primary
+                    "
+                    src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                  />
+                </div>
+                <div>
+                  <h2 class="text-gray-800 text-3xl font-semibold">
+                    Design Tools
+                  </h2>
+                  <p class="mt-2 text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quae dolores deserunt ea doloremque natus error, rerum quas
+                    odio quaerat nam ex commodi hic, suscipit in a veritatis
+                    pariatur minus consequuntur!
+                  </p>
+                </div>
+                <div class="flex justify-end mt-4">
+                  <a href="#" class="text-xl font-medium text-p-orange-primary"
+                    >John Doe</a
+                  >
+                </div>
+              </div>
+            </div>
+            <label
+              for="carousel-3"
+              class="
+                control-1
+                w-10
+                h-10
+                ml-2
+                md:ml-10
+                absolute
+                cursor-pointer
+                hidden
+                font-bold
+                text-black
+                hover:text-white
+                rounded-full
+                bg-white
+                hover:bg-p-orange-primary
+                leading-tight
+                text-center
+                z-10
+                inset-y-0
+                left-0
+                my-auto
+                flex
+                justify-center
+                content-center
+              "
+              ><i class="fas fa-angle-left mt-3"></i
+            ></label>
+            <label
+              for="carousel-2"
+              class="
+                next
+                control-1
+                w-10
+                h-10
+                mr-2
+                md:mr-10
+                absolute
+                cursor-pointer
+                hidden
+                font-bold
+                text-black
+                hover:text-white
+                rounded-full
+                bg-white
+                hover:bg-p-orange-primary
+                leading-tight
+                text-center
+                z-10
+                inset-y-0
+                right-0
+                my-auto
+              "
+              ><i class="fas fa-angle-right mt-3"></i
+            ></label>
+
+            <!--Slide 2-->
+            <input
+              class="carousel-open"
+              type="radio"
+              id="carousel-2"
+              name="carousel"
+              aria-hidden="true"
+              hidden=""
+            />
+            <div
+              style="height: 500px"
+              class="
+                carousel-item
+                absolute
+                opacity-0
+                bg-center
+                flex
+                items-center
+                justify-center
+                w-full
+                h-full
+                gap-x-12
+              "
+            >
+              <div
+                class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20"
+              >
+                <div class="flex justify-center md:justify-end -mt-16">
+                  <img
+                    class="
+                      w-20
+                      h-20
+                      object-cover
+                      rounded-full
+                      border-2 border-p-orange-primary
+                    "
+                    src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                  />
+                </div>
+                <div>
+                  <h2 class="text-gray-800 text-3xl font-semibold">
+                    Design Tools
+                  </h2>
+                  <p class="mt-2 text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quae dolores deserunt ea doloremque natus error, rerum quas
+                    odio quaerat nam ex commodi hic, suscipit in a veritatis
+                    pariatur minus consequuntur!
+                  </p>
+                </div>
+                <div class="flex justify-end mt-4">
+                  <a href="#" class="text-xl font-medium text-p-orange-primary"
+                    >John Doe</a
+                  >
+                </div>
+              </div>
+            </div>
+            <label
+              for="carousel-1"
+              class="
+                control-2
+                w-10
+                h-10
+                ml-2
+                md:ml-10
+                absolute
+                cursor-pointer
+                hidden
+                font-bold
+                text-black
+                hover:text-white
+                rounded-full
+                bg-white
+                hover:bg-p-orange-primary
+                leading-tight
+                text-center
+                z-10
+                inset-y-0
+                left-0
+                my-auto
+              "
+              ><i class="fas fa-angle-left mt-3"></i
+            ></label>
+            <label
+              for="carousel-3"
+              class="
+                next
+                control-2
+                w-10
+                h-10
+                mr-2
+                md:mr-10
+                absolute
+                cursor-pointer
+                hidden
+                font-bold
+                text-black
+                hover:text-white
+                rounded-full
+                bg-white
+                hover:bg-p-orange-primary
+                leading-tight
+                text-center
+                z-10
+                inset-y-0
+                right-0
+                my-auto
+              "
+              ><i class="fas fa-angle-right mt-3"></i
+            ></label>
+
+            <label
+              for="carousel-2"
+              class="
+                control-3
+                w-10
+                h-10
+                ml-2
+                md:ml-10
+                absolute
+                cursor-pointer
+                hidden
+                font-bold
+                text-black
+                hover:text-white
+                rounded-full
+                bg-white
+                hover:bg-p-orange-primary
+                leading-tight
+                text-center
+                z-10
+                inset-y-0
+                left-0
+                my-auto
+              "
+              ><i class="fas fa-angle-left mt-3"></i
+            ></label>
+            <label
+              for="carousel-1"
+              class="
+                next
+                control-3
+                w-10
+                h-10
+                mr-2
+                md:mr-10
+                absolute
+                cursor-pointer
+                hidden
+                font-bold
+                text-black
+                hover:text-white
+                rounded-full
+                bg-white
+                hover:bg-p-orange-primary
+                leading-tight
+                text-center
+                z-10
+                inset-y-0
+                right-0
+                my-auto
+              "
+              ><i class="fas fa-angle-right mt-3"></i
+            ></label>
+
+            <!-- Add additional indicators for each slide-->
+            <ol class="carousel-indicators">
+              <li class="inline-block mr-3">
+                <label
+                  for="carousel-1"
+                  class="
+                    carousel-bullet
+                    cursor-pointer
+                    block
+                    text-4xl text-white
+                    hover:text-p-orange-primary
+                  "
+                  >•</label
+                >
+              </li>
+              <li class="inline-block mr-3">
+                <label
+                  for="carousel-2"
+                  class="
+                    carousel-bullet
+                    cursor-pointer
+                    block
+                    text-4xl text-white
+                    hover:text-p-orange-primary
+                  "
+                  >•</label
+                >
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="w-full md:w-4/5 mx-auto p-8">
+          <h2 class="text-2xl text-center font-semibold">
+            Frequently Asked Questions
+          </h2>
+          <br />
+          <br />
+          <div class="shadow-md">
+            <div class="tab w-full overflow-hidden border-t">
+              <input
+                class="absolute opacity-0"
+                id="tab-single-one"
+                type="radio"
+                name="tabs2"
+              />
+              <label
+                class="block p-5 leading-normal cursor-pointer"
+                for="tab-single-one"
+                >How long should a car repair take?</label
+              >
+              <div
+                class="
+                  tab-content
+                  overflow-hidden
+                  border-l-2
+                  bg-gray-100
+                  border-p-orange-primary
+                  leading-normal
+                "
+              >
+                <p class="p-5">
+                  I have got my car repaired at Finsweet many times before, they
+                  are good at what they do. Not only did they repair my car I
+                  have got my car repaired at Finsweet I have got my car
+                  repaired at Finsweet
+                </p>
+              </div>
+            </div>
+            <div class="tab w-full overflow-hidden border-t">
+              <input
+                class="absolute opacity-0"
+                id="tab-single-two"
+                type="radio"
+                name="tabs2"
+              />
+              <label
+                class="block p-5 leading-normal cursor-pointer"
+                for="tab-single-two"
+                >How do I schedule my car's appointment ?</label
+              >
+              <div
+                class="
+                  tab-content
+                  overflow-hidden
+                  border-l-2
+                  bg-gray-100
+                  border-p-orange-primary
+                  leading-normal
+                "
+              >
+                <p class="p-5">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Tenetur, architecto, explicabo perferendis nostrum, maxime
+                  impedit atque odit sunt pariatur illo obcaecati soluta
+                  molestias iure facere dolorum adipisci eum? Saepe, itaque.
+                </p>
+              </div>
+            </div>
+            <div class="tab w-full overflow-hidden border-t">
+              <input
+                class="absolute opacity-0"
+                id="tab-single-three"
+                type="radio"
+                name="tabs2"
+              />
+              <label
+                class="block p-5 leading-normal cursor-pointer"
+                for="tab-single-three"
+                >What are the repair services provided?</label
+              >
+              <div
+                class="
+                  tab-content
+                  overflow-hidden
+                  border-l-2
+                  bg-gray-100
+                  border-p-orange-primary
+                  leading-normal
+                "
+              >
+                <p class="p-5">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Tenetur, architecto, explicabo perferendis nostrum, maxime
+                  impedit atque odit sunt pariatur illo obcaecati soluta
+                  molestias iure facere dolorum adipisci eum? Saepe, itaque.
+                </p>
+              </div>
+            </div>
+
+            <div class="tab w-full overflow-hidden border-t">
+              <input
+                class="absolute opacity-0"
+                id="tab-single-three"
+                type="radio"
+                name="tabs2"
+              />
+              <label
+                class="block p-5 leading-normal cursor-pointer"
+                for="tab-single-three"
+                >How do I find auto body shops near me?</label
+              >
+              <div
+                class="
+                  tab-content
+                  overflow-hidden
+                  border-l-2
+                  bg-gray-100
+                  border-p-orange-primary
+                  leading-normal
+                "
+              >
+                <p class="p-5">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Tenetur, architecto, explicabo perferendis nostrum, maxime
+                  impedit atque odit sunt pariatur illo obcaecati soluta
+                  molestias iure facere dolorum adipisci eum? Saepe, itaque.
+                </p>
+              </div>
+            </div>
+
+            <div class="tab w-full overflow-hidden border-t">
+              <input
+                class="absolute opacity-0"
+                id="tab-single-three"
+                type="radio"
+                name="tabs2"
+              />
+              <label
+                class="block p-5 leading-normal cursor-pointer"
+                for="tab-single-three"
+                >Genuine spare parts during car repair?</label
+              >
+              <div
+                class="
+                  tab-content
+                  overflow-hidden
+                  border-l-2
+                  bg-gray-100
+                  border-p-orange-primary
+                  leading-normal
+                "
+              >
+                <p class="p-5">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Tenetur, architecto, explicabo perferendis nostrum, maxime
+                  impedit atque odit sunt pariatur illo obcaecati soluta
+                  molestias iure facere dolorum adipisci eum? Saepe, itaque.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Exercicio estilizar footer-->
+      <footer>
+        <div>
+          <div class="w-6/12">
+            <div>
+              <h2>Get in touch with us for your service</h2>
+            </div>
+          </div>
+          <div class="w-6/12">
+            <ul>
+              <li>
+                <small>Help line Noumber</small>
+                <span>1800 265 24 52</span>
+              </li>
+              <li>
+                <small>Address</small>
+                <span>NH 234 Public Square San Francisco 65368</span>
+              </li>
+              <li>
+                <small>We are open</small>
+                <span>Monday to Friday 9:00 AM to  10:00  AM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h2>{finsweet</h2>
+          <div>
+            <ul>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Services</li>
+              <li>Blog</li>
+              <li>Contact us</li>
+            </ul>
+          </div>
+          <a>@ Copyright Finsweet 2021</a>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
